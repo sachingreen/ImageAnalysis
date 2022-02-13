@@ -1,3 +1,5 @@
+
+#Replace path with your folder name and run
 Path = '/Users/machinex1/Desktop/Flight 1 /Flight 2 - 25m 26102021';
 S = dir(Path);
 Scores = {};
