@@ -1,0 +1,17 @@
+Path = '/Users/machinex1/Desktop/Flight 1 /Flight 2 - 25m 26102021';
+S = dir(Path);
+Scores = {};
+for k=1:length(S)
+   FileNames=S(k).name
+   FilePath=append(Path,'/',FileNames)
+   TF = contains(FilePath,'.JPG')
+   if TF == 1
+       I = imread(FilePath)
+       niqeI = niqe(I);
+       Scores = [Scores,niqeI]
+   end    
+end
+TotalSum = sum(Scores)
+Average = mean(Scores)
+fid = fopen('/Users/machinex1/Desktop/Flight 1 /Niqe_Scores','w');
+fprintf(fid, '%s\n',append(Path,' - ',Average)) ;
