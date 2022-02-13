@@ -3,6 +3,7 @@ import os
 from skimage import io, img_as_float
 import imquality.brisque as brisque
 
+#Replace path with your folder name and run
 path = "/Users/machinex1/Desktop/Flight 1 /Flight 1 - 35m 26102021"
 dir_list = os.listdir(path)
 scores = []
