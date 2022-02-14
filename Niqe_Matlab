@@ -1,6 +1,6 @@
 
 #Replace path with your folder name and run
-Path = '/Users/machinex1/Desktop/Flight 1 /Flight 2 - 25m 26102021';
+Path = '/Users/machinex1/Desktop/Flight 1 /Altitude 16';
 S = dir(Path);
 Scores = {};
 for k=1:length(S)
@@ -13,7 +13,8 @@ for k=1:length(S)
        Scores = [Scores,niqeI]
    end    
 end
-TotalSum = sum(Scores)
-Average = mean(Scores)
+FinalScores = cell2mat(Scores)
+TotalSum = sum(FinalScores)
+Average = mean(FinalScores)
 fid = fopen('/Users/machinex1/Desktop/Flight 1 /Niqe_Scores','w');
-fprintf(fid, '%s\n',append(Path,' - ',Average)) ;
+sprintf(fid, '%s\n',append(Path,' - ',Average)) ;
