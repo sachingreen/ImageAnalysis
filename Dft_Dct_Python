@@ -13,6 +13,7 @@ import os
 from matplotlib import pyplot as plt
 from scipy.stats import skew
 
+#Replace path with your folder name
 path = "/Users/machinex1/Desktop/Flight 1 /Flight 2 - 25m 26102021"
 dir_list = os.listdir(path)
 dft_scores = []
