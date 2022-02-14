@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Feb 14 09:03:13 2022
+
+@author: machinex1
+"""
+
+import numpy as np
+import pandas as pd
+from PIL import Image
+import cv2
+import os
+from matplotlib import pyplot as plt
+from scipy.stats import skew
+
+#Replace with your folder name
+path = "/Users/machinex1/Desktop/Flight 1 /Flight 1 - 35m 26102021"
+dir_list = os.listdir(path)
+scores0_5 = []
+scores250 = []
+j = 0
+for i in dir_list:
+    j = j+1
+    file1 = path+'/'+i
+    print(file1)
+    img = cv2.imread(file1)
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite('img_gray.jpeg', img_gray)
+    im = Image.open('img_gray.jpeg', 'r')
+    pix_val = list(im.getdata())
+    count250 = [x for x in pix_val if x>249]
+    count0_5 = [x for x in pix_val if x>=0 and x<=5]
+    count250_len = len(count250)
+    count0_5_len = len(count0_5)
+    print(j)
+    scores0_5.append(count0_5_len)
+    scores250.append(count250_len)
+scores0_5_average = sum(scores0_5)/len(scores0_5)
+scores250_average = sum(scores250)/len(scores250)
+print(path+ ' - Score0_5 - ' + str(scores0_5_average)+ ' - Score250 - '+ str(scores250_average))
+fileout = open("/Users/machinex1/Desktop/Flight 1 /Pixel_Scores","a")
+fileout.write(path+ ' - Score0_5 - ' + str(scores0_5_average)+ ' - Score250 - '+ str(scores250_average)+"\n")
+fileout.close()
